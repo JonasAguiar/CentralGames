@@ -8,6 +8,7 @@ public class Loja {
 	private Set<Usuario> usuarios;
 	private Set<Jogo> jogos;
 	private FactoryJogo fabricaDeJogos;
+	private FactoryUsuario fabricaDeUsuario;
 	
 	public Loja(){
 		this.usuarios = new HashSet<Usuario>();
@@ -46,7 +47,7 @@ public class Loja {
 	
 		
 	
-	
+	//falta exception
 	public void vendeJogos(String id, String nomeJogo) throws Exception{
 		for(Usuario usuario : usuarios){
 			if(usuario.getId().equals(id)){
@@ -61,5 +62,19 @@ public class Loja {
 		}
 	}
 	
+	
+	public void upgrade(String id) throws Exception{
+		if(id == null || id.trim().equals("")){
+			throw new Exception("ID nao pode ser nulo ou vazio.");
+		}
+		for(Usuario usuario : usuarios){
+			if(usuario.getId().equals(id) && usuario.getX2p() >= 1000){
+				String tipoUsuario = usuario.getClass().getName();
+				Usuario novoUsuario = fabricaDeUsuario.getUsuario(tipoUsuario, usuario.getNome(), usuario.getId());
+				usuarios.remove(usuario);
+				usuarios.add(novoUsuario);
+			}
+		}
+	}
 	
 }
