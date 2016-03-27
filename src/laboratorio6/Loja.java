@@ -6,7 +6,8 @@ import java.util.Set;
 public class Loja {
 
 	private Set<Usuario> usuarios;
-	
+	private Set<Jogo> jogos;
+	private FactoryJogo fabricaDeJogos;
 	
 	public Loja(){
 		this.usuarios = new HashSet<Usuario>();
@@ -43,6 +44,22 @@ public class Loja {
 	}
 	
 	
+		
+	
+	
+	public void vendeJogos(String id, String nomeJogo) throws Exception{
+		for(Usuario usuario : usuarios){
+			if(usuario.getId().equals(id)){
+				for(Jogo jogo : jogos){
+					if(jogo.getNome().equals(nomeJogo) && jogo.getPreco() <= usuario.getDinheiro()){
+						String tipoJogo = jogo.getClass().getName();
+						Jogo novoJogo = fabricaDeJogos.getJogo(tipoJogo, jogo.getNome(), jogo.getPreco());
+						usuario.adicionaJogoComprado(novoJogo);
+					}
+				}
+			}
+		}
+	}
 	
 	
 }

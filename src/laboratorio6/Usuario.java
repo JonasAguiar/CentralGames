@@ -34,6 +34,10 @@ public class Usuario {
 		
 	}
 	
+	public void adicionaJogoComprado(Jogo jogo){
+		jogosComprados.add(jogo);
+	}
+	
 	public void compraJogo(Jogo jogo) throws Exception{
 		if(jogo == null){
 			throw new Exception("Jogo nao pode ser nulo.");
