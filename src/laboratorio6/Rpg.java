@@ -8,7 +8,16 @@ public class Rpg extends Jogo {
 	}
 
 	
-	
+	public int registraJogada(){
+		return 10;
+	}
+
+
+	@Override
+	public int registraJogada(double score, boolean zerou) throws Exception {
+		super.setQuantidadeJogadas(getQuantidadeJogadas() + 1);
+		return 10;
+	}
 	
 	
 }

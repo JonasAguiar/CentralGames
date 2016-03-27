@@ -9,6 +9,7 @@ public class Noob extends Usuario{
 		super(nome, id);
 	}
 	
+	@Override
 	public void compraJogo(Jogo jogo) throws Exception{
 			super.compraJogo(jogo);
 			double desconto = (jogo.getPreco() * PORCENTAGEM_DESCONTO)/100;

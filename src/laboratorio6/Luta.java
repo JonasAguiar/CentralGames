@@ -3,22 +3,25 @@ package laboratorio6;
 
 
 public class Luta extends Jogo {
+	private static final double SCORE_MAXIMO = 100000; 
 
 	public Luta(String nome, double preco) throws Exception {
 		super(nome, preco);
 		
 	}
-
-	/*public void registraJogada(double pontuacao, boolean zerou) throws Exception{
-		if(pontuacao <= 0){
-			throw new Exception("Pontuacao invalida.");
+	
+	@Override
+	public int registraJogada(double score, boolean zerou) throws Exception{
+		if(score < 0 || score > SCORE_MAXIMO){
+			throw new Exception("Score invalido.");
 		}
-		quantidadeJogadas++;
-		if(pontuacao > bestScore){
-			bestScore = pontuacao;
-		}if(zerou){
-			quantidadeZeradas += 1;
-		}
-	}*/
+		if(score > super.getBestScore() && zerou ){
+			super.setBestScore(score); 
+			super.setQuantidadeZeradas(super.getQuantidadeZeradas()+1);
+			return (int)score/1000;
+				}
+		super.setQuantidadeJogadas(super.getQuantidadeJogadas()+1);
+		return 0;
+	}
 	
 }

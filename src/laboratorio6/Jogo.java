@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-public class Jogo {
+public abstract class Jogo {
 
 	private String nome;
 	private double preco;
@@ -41,17 +41,9 @@ public class Jogo {
 	 * @param zerou
 	 * @throws Exception quando a pontuacao for invalida ou negativa. 
 	 */
-	public void registraJogada(double pontuacao, boolean zerou) throws Exception{
-		if(pontuacao <= 0){
-			throw new Exception("Pontuacao invalida.");
-		}
-		quantidadeJogadas++;
-		if(pontuacao > bestScore){
-			bestScore = pontuacao;
-		}if(zerou){
-			quantidadeZeradas += 1;
-		}
-	}
+	public abstract int registraJogada(double score, boolean zerou) throws Exception;
+		
+		
 	
 	public void adicionaJogabilidade(Jogabilidade jogabilidade) throws Exception{
 		if(jogabilidade == null){
