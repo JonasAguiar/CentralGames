@@ -123,13 +123,9 @@ public abstract class Jogo {
 		return true;
 	}
 	
-	String quebralinha = System.getProperty("line.separator");
 
 	@Override
-	public String toString() {
-		return "==> jogou " + quantidadeJogadas + " vez(es)" 
-				;
-	}
+	public abstract String toString();
 	
 	
 	

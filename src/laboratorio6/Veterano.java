@@ -26,5 +26,19 @@ public class Veterano extends Usuario {
 		
 	}
 	
+	
+	public String toString(){
+
+		final String QUEBRA_LINHA = System.getProperty("line.separator");
+
+		String mensagemJogos = "";
+		for (Jogo jogo : getJogosComprados()) {
+			mensagemJogos = mensagemJogos + jogo.toString() + QUEBRA_LINHA;
+		}
+
+		return getId() + QUEBRA_LINHA + getNome() + QUEBRA_LINHA + "Jogador Veterano: " + getX2p()
+				+ " x2p" + QUEBRA_LINHA + "Lista de Jogos:" + QUEBRA_LINHA + mensagemJogos
+				+ "Total de preco dos jogos: R$ " + getTotalGasto() + QUEBRA_LINHA;
+	}
 }
 

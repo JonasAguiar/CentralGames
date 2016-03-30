@@ -14,4 +14,15 @@ public class Plataforma extends Jogo{
 			return 20;
 		}return 0;
 	}
+	
+	@Override
+	public String toString() {
+		final String QUEBRA_LINHA = System.getProperty("line.separator");
+
+		return "+ " + getNome() + " - Plataforma" + QUEBRA_LINHA + "==> Jogou "
+				+ getQuantidadeJogadas() + " vez(es)" + QUEBRA_LINHA + "==> Zerou "
+				+ getQuantidadeZeradas() + " vez(es)" + QUEBRA_LINHA
+				+ "==> Maior score: " + getBestScore() + QUEBRA_LINHA;
+	}
+	
 }

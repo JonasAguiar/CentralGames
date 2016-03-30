@@ -7,6 +7,7 @@ public class Loja {
 
 	private Set<Usuario> usuarios;
 	private FactoryJogo fabricaDeJogos;
+	private FactoryUsuario fabricaDeUsuarios;
 	
 	public Loja(){
 		this.usuarios = new HashSet<Usuario>();
@@ -26,11 +27,16 @@ public class Loja {
 		}
 	}
 	
-	public void adicionaUsuario(Usuario usuario) throws Exception{
-		if(usuario == null){
-			throw new Exception("Usuario nao pode ser nulo.");
+	public void adicionaUsuario(String nome, String id, String tipoUsuario ) throws Exception{
+		if(nome == null || nome.trim().equals("")){
+			throw new Exception("Nome nao pode ser vazio ou nulo.");
 		}
+		if(id == null || id.trim().equals("")){
+			throw new Exception("Nome nao pode ser vazio ou nulo.");
+		}
+		Usuario usuario = fabricaDeUsuarios.criaUsuario(tipoUsuario, nome, id);
 		usuarios.add(usuario);
+		
 	}
 	
 	

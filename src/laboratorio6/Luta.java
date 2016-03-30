@@ -23,5 +23,14 @@ public class Luta extends Jogo {
 		super.setQuantidadeJogadas(super.getQuantidadeJogadas()+1);
 		return 0;
 	}
-	
+	@Override
+	public String toString() {
+		final String QUEBRA_LINHA = System.getProperty("line.separator");
+
+		return "+ " + getNome() + " - Luta" + QUEBRA_LINHA + "==> Jogou "
+				+ getQuantidadeJogadas() + " vez(es)" + QUEBRA_LINHA + "==> Zerou "
+				+ getQuantidadeZeradas() + " vez(es)" + QUEBRA_LINHA
+				+ "==> Maior score: " + getBestScore() + QUEBRA_LINHA;
+	}
 }
+

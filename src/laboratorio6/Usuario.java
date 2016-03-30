@@ -3,7 +3,7 @@ package laboratorio6;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Usuario {
+public abstract class Usuario {
 	
 	private String nome;
 	private String id;
@@ -47,6 +47,13 @@ public class Usuario {
 		
 	}
 	
+	public double getTotalGasto(){
+		double totalGasto = 0.0;
+		for (Jogo jogo : jogosComprados){
+			totalGasto += jogo.getPreco();
+		}
+		return totalGasto;
+	}
 	
 	
 	public void adicionaDinheiro(double dinheiroParaAdd) throws Exception{
@@ -164,7 +171,8 @@ public class Usuario {
 	}
 	
 	
-	
+	@Override
+	public abstract String toString();
 	
 	
 	

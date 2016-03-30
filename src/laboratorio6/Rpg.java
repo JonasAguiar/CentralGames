@@ -19,6 +19,14 @@ public class Rpg extends Jogo {
 		return 10;
 	}
 	
-	
+	@Override
+	public String toString() {
+		final String QUEBRA_LINHA = System.getProperty("line.separator");
+
+		return "+ " + getNome() + " - RPG" + QUEBRA_LINHA + "==> Jogou "
+				+ getQuantidadeJogadas() + " vez(es)" + QUEBRA_LINHA + "==> Zerou "
+				+ getQuantidadeZeradas() + " vez(es)" + QUEBRA_LINHA
+				+ "==> Maior score: " + getBestScore() + QUEBRA_LINHA;
+	}
 }
 
