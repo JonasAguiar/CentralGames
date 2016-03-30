@@ -1,5 +1,4 @@
-package laboratorio6;
-
+package Jogo;
 
 public class Rpg extends Jogo {
 

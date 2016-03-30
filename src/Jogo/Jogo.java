@@ -1,4 +1,4 @@
-package laboratorio6;
+package Jogo;
 
 
 import java.util.HashSet;

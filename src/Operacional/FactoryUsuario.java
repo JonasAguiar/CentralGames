@@ -1,4 +1,7 @@
-package laboratorio6;
+package Operacional;
+
+import Usuario.Usuario;
+import Usuario.Veterano;
 
 public class FactoryUsuario {
 	

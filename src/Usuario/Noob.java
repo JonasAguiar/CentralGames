@@ -1,5 +1,6 @@
-package laboratorio6;
+package Usuario;
 
+import Jogo.Jogo;
 
 public class Noob extends Usuario{
 	

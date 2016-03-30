@@ -1,7 +1,11 @@
-package laboratorio6;
+package Operacional;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import Jogo.Jogo;
+import Usuario.Usuario;
+import Usuario.Veterano;
 
 public class Loja {
 

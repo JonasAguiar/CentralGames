@@ -1,6 +1,8 @@
-package laboratorio6;
+package Usuario;
 
 import java.util.Set;
+
+import Jogo.Jogo;
 
 public class Veterano extends Usuario {
 

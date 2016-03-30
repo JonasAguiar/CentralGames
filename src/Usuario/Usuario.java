@@ -1,7 +1,9 @@
-package laboratorio6;
+package Usuario;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import Jogo.Jogo;
 
 public abstract class Usuario {
 	

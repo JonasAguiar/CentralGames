@@ -1,6 +1,4 @@
-package laboratorio6;
-
-
+package Jogo;
 
 public class Luta extends Jogo {
 	private static final double SCORE_MAXIMO = 100000; 

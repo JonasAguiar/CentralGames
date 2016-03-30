@@ -1,4 +1,8 @@
-package laboratorio6;
+package Operacional;
+
+import Jogo.Jogo;
+import Jogo.Plataforma;
+import Jogo.Rpg;
 
 public class FactoryJogo {
 	

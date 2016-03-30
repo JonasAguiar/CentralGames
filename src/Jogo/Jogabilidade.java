@@ -1,4 +1,4 @@
-package laboratorio6;
+package Jogo;
 
 public enum Jogabilidade {
 	
