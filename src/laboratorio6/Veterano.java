@@ -1,11 +1,19 @@
 package laboratorio6;
 
+import java.util.Set;
+
 public class Veterano extends Usuario {
 
 	private static final int MULTIPLICAX2P = 15;
 	private static final double PORCENTAGEM_DESCONTO = 20;
+	
 	public Veterano(String nome, String id) throws Exception {
 		super(nome, id);
+
+	}
+	
+	public Veterano(String nome, String id, Set<Jogo> jogosComprados, double dinheiro, int x2p) throws Exception {
+		super(nome, id, jogosComprados, dinheiro, x2p);
 
 	}
 	

@@ -25,6 +25,29 @@ public class Usuario {
 		this.x2p = 0;
 	}
 	
+	public Usuario(String nome, String id, Set<Jogo> jogosComprados, double dinheiro, int x2p) throws Exception{
+		if(nome == null || nome.trim().equals("")){
+			throw new Exception("Nome nao pode ser nulo ou vazio.");
+		}
+		if(id == null || id.trim().equals("")){
+			throw new Exception("Nome nao pode ser nulo ou vazio.");
+		}
+		if(dinheiro < 0){
+			throw new Exception("Dinheiro nao pode ser negativo");
+		}
+		if(x2p < 0){
+			throw new Exception("x2p nao pode ser negativo");
+		}
+		this.nome = nome;
+		this.id = id;
+		this.jogosComprados = new HashSet<Jogo>();
+		this.dinheiro = dinheiro;
+		this.x2p = x2p;
+		
+		
+	}
+	
+	
 	
 	public void adicionaDinheiro(double dinheiroParaAdd) throws Exception{
 		if(dinheiroParaAdd < 0){

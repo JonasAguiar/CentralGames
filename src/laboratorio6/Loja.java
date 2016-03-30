@@ -6,9 +6,7 @@ import java.util.Set;
 public class Loja {
 
 	private Set<Usuario> usuarios;
-	private Set<Jogo> jogos;
 	private FactoryJogo fabricaDeJogos;
-	private FactoryUsuario fabricaDeUsuario;
 	
 	public Loja(){
 		this.usuarios = new HashSet<Usuario>();
@@ -23,7 +21,7 @@ public class Loja {
 		}
 		for(Usuario usuario : usuarios){
 			if(usuario.getId().equals(id)){
-				usuario.setDinheiro(usuario.getDinheiro() + dinheiroParaAdd);
+				usuario.adicionaDinheiro(dinheiroParaAdd);
 			}
 		}
 	}
@@ -35,6 +33,9 @@ public class Loja {
 		usuarios.add(usuario);
 	}
 	
+	
+	
+	
 	public void removeUsuario(String nome) throws Exception{
 		if(nome == null || nome.trim().equals("")){
 			throw new Exception("nome nao pode ser nulo ou vazio");
@@ -44,22 +45,23 @@ public class Loja {
 		}
 	}
 	
-	
+	public Jogo criaJogo(String tipoJogo, String nome, double preco) throws Exception{
+		Jogo jogo = fabricaDeJogos.getJogo(tipoJogo, nome, preco);
+		return jogo;
+	}
+		
 		
 	
 	//falta exception
-	public void vendeJogos(String id, String nomeJogo) throws Exception{
+	public void vendeJogos(String id, String nomeJogo, String tipoJogo, double preco) throws Exception{
+		Jogo jogo = fabricaDeJogos.getJogo(tipoJogo, nomeJogo, preco);
 		for(Usuario usuario : usuarios){
 			if(usuario.getId().equals(id)){
-				for(Jogo jogo : jogos){
-					if(jogo.getNome().equals(nomeJogo) && jogo.getPreco() <= usuario.getDinheiro()){
-						String tipoJogo = jogo.getClass().getName();
-						Jogo novoJogo = fabricaDeJogos.getJogo(tipoJogo, jogo.getNome(), jogo.getPreco());
-						usuario.adicionaJogoComprado(novoJogo);
+				usuario.compraJogo(jogo);
 					}
 				}
-			}
-		}
+
+		
 	}
 	
 	
@@ -70,9 +72,17 @@ public class Loja {
 		for(Usuario usuario : usuarios){
 			if(usuario.getId().equals(id) && usuario.getX2p() >= 1000){
 				String tipoUsuario = usuario.getClass().getName();
-				Usuario novoUsuario = fabricaDeUsuario.getUsuario(tipoUsuario, usuario.getNome(), usuario.getId());
-				usuarios.remove(usuario);
-				usuarios.add(novoUsuario);
+				if(tipoUsuario.equals("Veterano")){
+					throw new Exception("Usuario ja eh veterano.");
+				}else if(tipoUsuario.equals("Noob")){
+					Usuario novoUsuario = new Veterano(usuario.getNome(), usuario.getId());
+					novoUsuario.setJogosComprados(usuario.getJogosComprados());
+					novoUsuario.setDinheiro(usuario.getDinheiro());
+					novoUsuario.setX2p(usuario.getX2p());
+					usuarios.remove(usuario);
+					usuarios.add(novoUsuario);	
+				}
+				
 			}
 		}
 	}

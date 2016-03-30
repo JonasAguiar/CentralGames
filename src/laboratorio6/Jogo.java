@@ -122,12 +122,13 @@ public abstract class Jogo {
 			return false;
 		return true;
 	}
+	
+	String quebralinha = System.getProperty("line.separator");
 
 	@Override
 	public String toString() {
-		return "Jogo [nome=" + nome + ", preco=" + preco + ", bestScore="
-				+ bestScore + ", quantidadeJogadas=" + quantidadeJogadas
-				+ ", quantidadeZeradas=" + quantidadeZeradas + "]";
+		return "==> jogou " + quantidadeJogadas + " vez(es)" 
+				;
 	}
 	
 	
