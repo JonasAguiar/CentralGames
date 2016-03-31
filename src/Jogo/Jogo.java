@@ -4,18 +4,20 @@ package Jogo;
 import java.util.HashSet;
 import java.util.Set;
 
+import Exceptions.StringInvalidaException;
+
 
 public abstract class Jogo {
 
 	private String nome;
 	private double preco;
-	private double bestScore;
+	private int bestScore;
 	private int quantidadeJogadas;
 	private int quantidadeZeradas;
 	private Set<Jogabilidade> jogabilidades;
 	
 	/**
-	 * 
+	 * Esse metodo cria o objeto de referencia jogo.
 	 * @param nome
 	 * @param preco
 	 * @throws Exception 
@@ -30,7 +32,7 @@ public abstract class Jogo {
 		
 		this.nome = nome;
 		this.preco = preco;
-		this.bestScore = 0.0;
+		this.bestScore = 0;
 		this.quantidadeJogadas = 0;
 		this.quantidadeZeradas = 0;
 		this.jogabilidades = new HashSet<Jogabilidade>();
@@ -41,17 +43,29 @@ public abstract class Jogo {
 	 * @param zerou
 	 * @throws Exception quando a pontuacao for invalida ou negativa. 
 	 */
-	public abstract int registraJogada(double score, boolean zerou) throws Exception;
+	public abstract int registraJogada(int score, boolean zerou) throws Exception;
 		
 		
 	
 	public void adicionaJogabilidade(Jogabilidade jogabilidade) throws Exception{
 		if(jogabilidade == null){
-			throw new Exception("Jogabilidade nao pode ser nula");
+			throw new StringInvalidaException("Jogabilidade nao pode ser nula");
 		}
 		jogabilidades.add(jogabilidade);
 	}
+	/**
+	 * Esse metodo retorna as jogabilidades dos jogos do usuario.
+	 * @return jogabilidade
+	 */
+	public Jogabilidade getJogabilidade(){
+		for(Jogabilidade jogabilidade: jogabilidades){
+			return jogabilidade;
+		}return null;
+	}
 	
+	/**
+	 * gets e sets
+	 */
 	public String getNome() {
 		return nome;
 	}
@@ -68,11 +82,11 @@ public abstract class Jogo {
 		this.preco = preco;
 	}
 
-	public double getBestScore() {
+	public int getBestScore() {
 		return bestScore;
 	}
 
-	public void setBestScore(double bestScore) {
+	public void setBestScore(int bestScore) {
 		this.bestScore = bestScore;
 	}
 

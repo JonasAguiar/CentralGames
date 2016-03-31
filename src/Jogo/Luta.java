@@ -9,7 +9,7 @@ public class Luta extends Jogo {
 	}
 	
 	@Override
-	public int registraJogada(double score, boolean zerou) throws Exception{
+	public int registraJogada(int score, boolean zerou) throws Exception{
 		if(score < 0 || score > SCORE_MAXIMO){
 			throw new Exception("Score invalido.");
 		}

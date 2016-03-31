@@ -6,10 +6,13 @@ public class Plataforma extends Jogo{
 		super(nome, preco);
 	}
 
-	public int registraJogada(double score, boolean zerou){
+	public int registraJogada(int score, boolean zerou){
+		super.setQuantidadeJogadas(getQuantidadeJogadas()+1);
+		if(score > super.getBestScore() ){
+			super.setBestScore(score);
+		}
 		if(zerou){
 			super.setQuantidadeZeradas(getQuantidadeZeradas()+1);
-			super.setQuantidadeJogadas(getQuantidadeJogadas()+1);
 			return 20;
 		}return 0;
 	}

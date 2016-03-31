@@ -13,6 +13,12 @@ public abstract class Usuario {
 	private double dinheiro;
 	private int x2p;
 	
+	/**
+	 * O metodo é o construtor da classe Usuario.
+	 * @param nome
+	 * @param id
+	 * @throws Exception
+	 */
 	public Usuario(String nome, String id) throws Exception{
 		if(nome == null || nome.trim().equals("")){
 			throw new Exception("Nome nao pode ser nulo ou vazio.");
@@ -27,28 +33,10 @@ public abstract class Usuario {
 		this.x2p = 0;
 	}
 	
-	public Usuario(String nome, String id, Set<Jogo> jogosComprados, double dinheiro, int x2p) throws Exception{
-		if(nome == null || nome.trim().equals("")){
-			throw new Exception("Nome nao pode ser nulo ou vazio.");
-		}
-		if(id == null || id.trim().equals("")){
-			throw new Exception("Nome nao pode ser nulo ou vazio.");
-		}
-		if(dinheiro < 0){
-			throw new Exception("Dinheiro nao pode ser negativo");
-		}
-		if(x2p < 0){
-			throw new Exception("x2p nao pode ser negativo");
-		}
-		this.nome = nome;
-		this.id = id;
-		this.jogosComprados = new HashSet<Jogo>();
-		this.dinheiro = dinheiro;
-		this.x2p = x2p;
-		
-		
-	}
-	
+	/**
+	 * O metodo resgata o total gasto pelo usuario.
+	 * @return totalgasto
+	 */
 	public double getTotalGasto(){
 		double totalGasto = 0.0;
 		for (Jogo jogo : jogosComprados){
@@ -57,7 +45,11 @@ public abstract class Usuario {
 		return totalGasto;
 	}
 	
-	
+	/**
+	 * O metodo adiciona dinheiro no usuario.
+	 * @param dinheiroParaAdd
+	 * @throws Exception
+	 */
 	public void adicionaDinheiro(double dinheiroParaAdd) throws Exception{
 		if(dinheiroParaAdd < 0){
 			throw new Exception("O dinheiro a ser adicionado nao pode ser negativo.");
@@ -65,11 +57,19 @@ public abstract class Usuario {
 		this.dinheiro += dinheiroParaAdd;
 		
 	}
-	
+	/**
+	 * O metodo adiciona um jogo comprado a lista de jogos do usuario.
+	 * @param jogo
+	 */
 	public void adicionaJogoComprado(Jogo jogo){
 		jogosComprados.add(jogo);
 	}
 	
+	/**
+	 * O metodo compra jogo da loja.
+	 * @param jogo
+	 * @throws Exception
+	 */
 	public void compraJogo(Jogo jogo) throws Exception{
 		if(jogo == null){
 			throw new Exception("Jogo nao pode ser nulo.");
@@ -80,8 +80,14 @@ public abstract class Usuario {
 		
 	}
 	
-	
-	public void registraJogada(String nomeJogo, double score, boolean zerou ) throws Exception{
+	/**
+	 * O metodo registra jogada do usuario em algum jogo.
+	 * @param nomeJogo
+	 * @param score
+	 * @param zerou
+	 * @throws Exception
+	 */
+	public void registraJogada(String nomeJogo, int score, boolean zerou ) throws Exception{
 		if(nome == null || nome.trim().equals("")){
 			throw new Exception("Nome nao pode ser null ou vazio");
 		}
@@ -90,7 +96,11 @@ public abstract class Usuario {
 		
 		
 	}
-	
+	/**
+	 * O metodo retorna os jogos do usuario
+	 * @param nome
+	 * @return
+	 */
 	public Jogo getJogo(String nome){
 		for(Jogo jogo : jogosComprados){
 			if(jogo.getNome().equals(nome)){
@@ -99,6 +109,9 @@ public abstract class Usuario {
 		}return null;
 	}
 
+	/**
+	 * gets e sets
+	 */
 	public String getNome() {
 		return nome;
 	}

@@ -5,7 +5,14 @@ import Usuario.Veterano;
 
 public class FactoryUsuario {
 	
-	
+	/**
+	 * O metodo é uma fabrica de usuarios, usado para criacao deles.
+	 * @param tipoUsuario
+	 * @param nomeUsuario
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	public Usuario criaUsuario(String tipoUsuario, String nomeUsuario, String id) throws Exception{
 		if(tipoUsuario == null){
 			throw new Exception("Nao pode ser criado usuario nulo.");

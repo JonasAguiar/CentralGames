@@ -6,14 +6,12 @@ public class Rpg extends Jogo {
 		super(nome, preco);
 	}
 
-	
-	public int registraJogada(){
-		return 10;
-	}
-
-
+	/**Esse metodo registra uma jogada do usuario.
+	 * parametros: score e zerou
+	 * return: 10
+	 */
 	@Override
-	public int registraJogada(double score, boolean zerou) throws Exception {
+	public int registraJogada(int score, boolean zerou) throws Exception {
 		super.setQuantidadeJogadas(getQuantidadeJogadas() + 1);
 		return 10;
 	}

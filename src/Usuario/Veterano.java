@@ -1,6 +1,5 @@
 package Usuario;
 
-import java.util.Set;
 
 import Jogo.Jogo;
 
@@ -14,11 +13,9 @@ public class Veterano extends Usuario {
 
 	}
 	
-	public Veterano(String nome, String id, Set<Jogo> jogosComprados, double dinheiro, int x2p) throws Exception {
-		super(nome, id, jogosComprados, dinheiro, x2p);
-
-	}
-	
+	/**
+	 * O metodo compra jogo da loja
+	 */
 	@Override
 	public void compraJogo(Jogo jogo) throws Exception{
 		super.compraJogo(jogo);
