@@ -47,6 +47,25 @@ public class Usuario {
 		return totalGasto;
 	}
 	
+
+	public void recompensar(String nomeJogo, int score, boolean zerou) throws Exception {
+		for (Jogo jogo : jogosComprados) {
+			if (jogo.getNome().equals(nomeJogo)) {
+				this.x2p = this.x2p + this.tipoDeUsuario.recompensar(jogo, score, zerou);
+			}
+		}
+		transformaUsuario(getX2p());
+	}
+	
+	public void punir(String nomeJogo, int score, boolean zerou) throws Exception {
+		for (Jogo jogo : jogosComprados) {
+			if (jogo.getNome().equals(nomeJogo)) {
+				this.x2p = this.x2p + this.tipoDeUsuario.punir(jogo, score, zerou);
+			}
+		}
+		transformaUsuario(getX2p());
+	}
+	
 	
 	
 	/**
@@ -61,6 +80,17 @@ public class Usuario {
 		this.dinheiro += dinheiroParaAdd;
 		
 	}
+	
+	public void transformaUsuario(int x2p) throws Exception{
+		if (x2p >= 1000 && tipoDeUsuario instanceof Noob) {
+			tornaVeterano();
+		} else if(x2p >= 1000 && tipoDeUsuario instanceof Veterano){
+			throw new Exception("usuario ja eh veterano");
+		} else if(x2p < 1000 && tipoDeUsuario instanceof Veterano){
+			tornaNoob();
+		}
+	}
+	
 	/**
 	 * O metodo adiciona um jogo comprado a lista de jogos do usuario.
 	 * @param jogo
@@ -119,6 +149,15 @@ public class Usuario {
 		}return null;
 	}
 
+	public void tornaVeterano(){
+		this.tipoDeUsuario = new Veterano();
+	}
+	
+	public void tornaNoob(){
+		this.tipoDeUsuario = new Noob();
+	}
+	
+	
 	/**
 	 * gets e sets
 	 */

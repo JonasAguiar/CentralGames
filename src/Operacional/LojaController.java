@@ -4,9 +4,8 @@ import Exceptions.DadoInvalidoException;
 import Exceptions.EntradaInvalidaException;
 import Exceptions.StringInvalidaException;
 import Jogo.Jogo;
-import Usuario.Noob;
 import Usuario.Usuario;
-import Usuario.Veterano;
+
 
 
 public class LojaController {
@@ -109,55 +108,6 @@ public class LojaController {
 		}	
 		
 	}
-	
-	/**
-	 * O metodo faz o upgrade do usuario, upcast de noob para veterano.
-	 * @param id
-	 * @throws Exception
-	 */
-	public void upgrade(String id) throws Exception{
-		if(id == null || id.trim().equals("")){
-			throw new StringInvalidaException("ID nao pode ser nulo ou vazio.");
-		}
-		try {
-			for(Usuario usuario : lojaFacade.getUsuarios()){
-				if(usuario.getId().equals(id) && usuario.getX2p() >= 1000){
-					if(usuario.getTipoDeUsuario() instanceof Veterano){
-						throw new Exception("Usuario ja eh veterano.");
-					}else if(usuario.getTipoDeUsuario() instanceof Noob){
-						usuario.setTipoDeUsuario("Veterano");
-					}
-					
-				}
-			}
-		} catch (EntradaInvalidaException e) {
-			System.out.println(e.getMessage());
-		}
-		
-	}
-	
-	
-	public void downgrade(String id) throws StringInvalidaException{
-		if(id == null || id.trim().equals("")){
-			throw new StringInvalidaException("ID nao pode ser nulo ou vazio.");
-		}
-		try {
-			for(Usuario usuario : lojaFacade.getUsuarios()){
-				if(usuario.getId().equals(id) && usuario.getX2p() >= 1000){
-					if(usuario.getTipoDeUsuario() instanceof Noob){
-						throw new Exception("Usuario ja eh noob.");
-					}else if(usuario.getTipoDeUsuario() instanceof Veterano){
-						usuario.setTipoDeUsuario("Noob");
-					}
-			}
-		}
-		}
-		 catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-	
-	
 	
 	
 	/**
