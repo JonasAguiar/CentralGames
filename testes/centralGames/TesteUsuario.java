@@ -7,14 +7,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Exceptions.EntradaInvalidaException;
-import Jogo.Jogabilidade;
 import Jogo.Jogo;
 import Jogo.Luta;
 import Jogo.Plataforma;
 import Jogo.Rpg;
 import Usuario.Noob;
 import Usuario.Usuario;
-import Usuario.Veterano;
+
 
 public class TesteUsuario {
 
@@ -25,9 +24,7 @@ public class TesteUsuario {
 	private Jogo jogo1;
 	private Jogo jogo2;
 	private Jogo jogo3;
-	private HashSet<Jogabilidade> j1;
-	private HashSet<Jogabilidade> j2;
-	private HashSet<Jogabilidade> j3;
+	
 
 	@Before
 	public void setUp() throws Exception {
