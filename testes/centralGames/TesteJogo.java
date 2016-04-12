@@ -25,15 +25,15 @@ public class TesteJogo {
 	public void setUp() throws Exception {
 		try {
 			
-			jogo1 = new Plataforma("Puzzle", 15.00);
+			Jogo jogo1 = new Plataforma("Puzzle", 15.00);
 			jogo1.adicionaJogabilidade(Jogabilidade.ONLINE);
 
 			
-			jogo2 = new Rpg("Batman", 12.00);
+			Jogo jogo2 = new Rpg("Batman", 12.00);
 			jogo2.adicionaJogabilidade(Jogabilidade.COMPETITIVO);
 
 			
-			jogo3 = new Luta("Medieval", 29.00);
+			Jogo jogo3 = new Luta("Cruzader", 29.00);
 			jogo3.adicionaJogabilidade(Jogabilidade.COOPERATIVO);
 
 		} catch (EntradaInvalidaException e) {
@@ -52,7 +52,7 @@ public class TesteJogo {
 			Assert.assertEquals(12.0, jogo2.getPreco(), 0.1);
 			Assert.assertEquals(Jogabilidade.COMPETITIVO, jogo2.getJogabilidade());
 
-			Assert.assertEquals("Medieval", jogo3.getNome());
+			Assert.assertEquals("Cruzader", jogo3.getNome());
 			Assert.assertEquals(29.0, jogo3.getPreco(), 0.1);
 			Assert.assertEquals(Jogabilidade.COOPERATIVO, jogo3.getJogabilidade());
 
@@ -61,25 +61,6 @@ public class TesteJogo {
 		}
 	}
 
-	@Test
-	public void testaJogoInvalido() throws Exception {
-		try {
-			jogo4 = new Plataforma("", 10.0);
-
-		} catch (EntradaInvalidaException e) {
-			Assert.assertEquals("String especificada e invalida", e.getMessage());
-		}
-
-		try {
-			jogo5 = new Rpg("ManieHam", -1);
-
-		} catch (EntradaInvalidaException e) {
-			Assert.assertEquals("Dado especificado e invalido", e.getMessage());
-		}
-	}
-
-	
-	
 	@Test
 	public void testaJoga() {
 		try {
@@ -101,6 +82,20 @@ public class TesteJogo {
 
 		} catch (Exception e) {
 			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void testaJogoInvalido() throws Exception {
+		try {
+			Jogo jogo4 = new Plataforma("", 10.0);
+		} catch (EntradaInvalidaException e) {
+			Assert.assertEquals("String especificada e invalida", e.getMessage());
+		}
+		try {
+			Jogo jogo5 = new Rpg("ManieHam", -1);
+		} catch (EntradaInvalidaException e) {
+			Assert.assertEquals("Dado especificado e invalido", e.getMessage());
 		}
 	}
 
