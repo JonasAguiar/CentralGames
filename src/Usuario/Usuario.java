@@ -5,16 +5,17 @@ import java.util.Set;
 
 import Jogo.Jogo;
 
-public abstract class Usuario {
+public class Usuario {
 	
 	private String nome;
 	private String id;
 	private Set<Jogo> jogosComprados;
 	private double dinheiro;
 	private int x2p;
+	private ITipoUsuario tipoDeUsuario;
 	
 	/**
-	 * O metodo é o construtor da classe Usuario.
+	 * O metodo ï¿½ o construtor da classe Usuario.
 	 * @param nome
 	 * @param id
 	 * @throws Exception
@@ -31,6 +32,7 @@ public abstract class Usuario {
 		this.jogosComprados = new HashSet<Jogo>();
 		this.dinheiro = 0.0;
 		this.x2p = 0;
+		this.tipoDeUsuario = new Noob();
 	}
 	
 	/**
@@ -44,6 +46,8 @@ public abstract class Usuario {
 		}
 		return totalGasto;
 	}
+	
+	
 	
 	/**
 	 * O metodo adiciona dinheiro no usuario.
@@ -75,7 +79,10 @@ public abstract class Usuario {
 			throw new Exception("Jogo nao pode ser nulo.");
 		}
 		if(jogo.getPreco() <= dinheiro){
-			jogosComprados.add(jogo);
+			this.x2p += tipoDeUsuario.compraJogo(jogo);
+			this.dinheiro -= jogo.getPreco();
+		}else{
+			throw new Exception("Usuario nao possui dinheiro suficiente.");
 		}
 		
 	}
@@ -92,6 +99,9 @@ public abstract class Usuario {
 			throw new Exception("Nome nao pode ser null ou vazio");
 		}
 		this.x2p += getJogo(nomeJogo).registraJogada(score, zerou);
+		
+		
+		
 		
 		
 		
@@ -184,11 +194,35 @@ public abstract class Usuario {
 			return false;
 		return true;
 	}
+
+	public ITipoUsuario getTipoDeUsuario() {
+		return tipoDeUsuario;
+	}
+
+	public void setTipoDeUsuario(String tipoDeUsuario) {
+		if(tipoDeUsuario.equals("Veterano")){
+			this.tipoDeUsuario = new Veterano();
+		}
+		if(tipoDeUsuario.equals("Noob")){
+			this.tipoDeUsuario = new Noob();
+		}
+		
+	}
 	
 	
 	@Override
-	public abstract String toString();
-	
+	public String toString() {
+		final String QUEBRA_LINHA = System.getProperty("line.separator");
+
+		String mensagemJogos = "";
+		for (Jogo jogo : jogosComprados) {
+			mensagemJogos = mensagemJogos + jogo.toString() + QUEBRA_LINHA;
+		}
+
+		return getId() + QUEBRA_LINHA + getNome() + QUEBRA_LINHA + "Jogador " + tipoDeUsuario.toString() + getX2p()
+				+ " x2p" + QUEBRA_LINHA + "Lista de Jogos:" + QUEBRA_LINHA + mensagemJogos
+				+ "Total de preco dos jogos: R$ " + getTotalGasto() + QUEBRA_LINHA;
+	}
 	
 	
 
