@@ -3,6 +3,7 @@ package Usuario;
 import java.util.HashSet;
 import java.util.Set;
 
+import Exceptions.ConversaoInvalidaException;
 import Jogo.Jogo;
 
 public class Usuario {
@@ -85,7 +86,7 @@ public class Usuario {
 		if (x2p >= 1000 && tipoDeUsuario instanceof Noob) {
 			tornaVeterano();
 		} else if(x2p >= 1000 && tipoDeUsuario instanceof Veterano){
-			throw new Exception("usuario ja eh veterano");
+			throw new ConversaoInvalidaException("usuario ja eh veterano");
 		} else if(x2p < 1000 && tipoDeUsuario instanceof Veterano){
 			tornaNoob();
 		}
